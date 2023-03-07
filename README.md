@@ -1,2 +1,2 @@
 # Practicas-Tecnica-LancerGroup
-La finalidad de este repositorio es poder medir los conocimientos del participante mediante una practicas tecnica(Backend) para poder entrar en Lancer Group.
+Recopilacion de pruebas tecnicas de LancerGroup para Aspirantes a Desarrollador Frontend y Backend
