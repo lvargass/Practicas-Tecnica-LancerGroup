@@ -11,7 +11,7 @@ import { StorageService } from './storage.service';
 })
 export class GeneralService {
 
-  private baseURL: string = 'https://api.lancergroup.org/likeride/api/Auth/Register';
+  private baseURL: string = 'https://api.lancergroup.org/likeride/api/Auth/';
   private API_KEY: string = '123456';
   public userInfo: IUser | null = null;
 
@@ -33,14 +33,14 @@ export class GeneralService {
   /**
    * registerUser
    */
-  public async registerUser(user: IUserRequest) {
+  public async registerOrSigninUser(user: IUserRequest, API: string = 'Register') {
     try {
       // Mostrando el loading
       const loading = await this.getLoadingCtrl({});
       // Presentando el loading
       loading.present();
       // Realizando el request
-      const response = await axios.postForm(this.baseURL, {
+      const response = await axios.postForm(`${this.baseURL}${API}`, {
         ...user,
         type: 1, // Obteniendo el userid o no.... con 1
         answer: 'DEV'
@@ -76,6 +76,17 @@ export class GeneralService {
    */
   public logoutUser(): void {
     this.storageS.remove('userInfo'); // Borrando la informacion del usuario
+  }
+
+  /**
+   * saveInfoUser
+   */
+  public saveInfoUser(userData: any): void {
+    // Guardando la informacion del usuario
+    this.storageS.set('userInfo', {
+      location: {},
+      userData
+    });
   }
 
   /**

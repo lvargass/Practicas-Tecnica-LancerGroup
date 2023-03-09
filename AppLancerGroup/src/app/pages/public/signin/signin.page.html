@@ -14,17 +14,17 @@
       <h1 class="logo-placeholder">AppLacerGroup</h1>
       <p>Haz login en tu cuenta.</p>
     </div>
-    <form classs="form-default">
+    <form classs="form-default" [formGroup]="signin_form" (submit)="signIn()">
       <ion-list class="item-card-list">
         <ion-item>
           <ion-label position="stacked">Email <span class="text-danger">*</span></ion-label>
-          <ion-input type="email" autocomplete="off" placeholder="Your email address">
+          <ion-input type="email" formControlName="email" name="email" autocomplete="off" placeholder="Your email address">
           </ion-input>
         </ion-item>
   
         <ion-item class="ion-margin-top-small">
           <ion-label position="stacked">Password <span class="text-danger">*</span></ion-label>
-          <ion-input type="password" placeholder="Your password"></ion-input>
+          <ion-input type="password" formControlName="password" name="password" placeholder="Your password"></ion-input>
         </ion-item>
       </ion-list>
   

@@ -21,8 +21,7 @@ export class SignupPage implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private gService: GeneralService,
-    private router: Router,
-    private storageS: StorageService
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -65,7 +64,7 @@ export class SignupPage implements OnInit {
       return;
     }
     // Mandando a registrar el usuario General Service
-    const result = await this.gService.registerUser({
+    const result = await this.gService.registerOrSigninUser({
       userEmail: this.signup_form.value.email,
       userPassword: this.signup_form.value.password,
       userName: `${this.signup_form.value.first_name} ${this.signup_form.value.last_name}`,
@@ -80,7 +79,7 @@ export class SignupPage implements OnInit {
         return;
       }
       // Si el usuario existe, guardamos la informacion en el storage
-      this.saveInfoUser(result);
+      this.gService.saveInfoUser(result);
       // Mostramos la pagina principal
       this.gService.getToastCtrl('Usuario registrado', 'El registro de usuario ha sido exitoso.', 'bottom', 'success', 5000);
       this.router.navigateByUrl('/home');
@@ -102,14 +101,6 @@ export class SignupPage implements OnInit {
     }
     // Back
     this.slides.slidePrev();
-  }
-
-  private saveInfoUser(userData: any): void {
-    // Guardando la informacion del usuario
-    this.storageS.set('userInfo', {
-      location: {},
-      userData
-    });
   }
 
 }
