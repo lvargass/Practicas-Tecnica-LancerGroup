@@ -1,0 +1,79 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+/* Forms */
+ion-input {
+    --placeholder-color: var(--ion-color-medium);
+  }
+  
+  form.form-default ion-list.item-card-list ion-item {
+    border-radius: 8px;
+    box-shadow: 0 2px 5px 0 rgb(126 144 169 / 7%), 0 2px 5px 0 rgb(126 144 169 / 2%);
+  }
+  
+  form.form-default ion-list.item-card-list ion-item.item-has-focus {
+    border-radius: 8px;
+    box-shadow: 0 2px 5px 0 rgb(126 144 169 / 7%), 0 2px 5px 0 rgb(126 144 169 / 2%);
+  }
+  
+  form.form-default ion-list.item-card-list ion-item ion-label {
+    margin: 12px 0 -6px 0;
+    font-weight: 500;
+  }
+  
+  form.form-default ion-list.item-card-list ion-item.item-label-floating ion-input {
+    font-size: 16px;
+    --padding-top: 0;
+    --padding-bottom: 0;
+    margin-bottom: 8px;
+  }
+  
+  small.error-message-form {
+    display: block;
+    margin: -6px 16px 12px 16px;
+    font-weight: 500;
+  }
+  
+  /* Logo */
+  .logo-container {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  h1.logo-placeholder {
+    font-weight: 600;
+    background: -webkit-linear-gradient(var(--ion-color-medium), var(--ion-color-primary));
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    font-size: 36px;
+    margin: 0 0 6px 0;
+  }
+  
+  .logo-container p {
+    color: var(--ion-color-medium);
+  }

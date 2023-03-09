@@ -1,0 +1,7 @@
+{
+  "name": "AppLancerGroup",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,44 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="light">
+    <ion-buttons slot="end">
+      <ion-button color="primary" routerLink="/signup">
+        Sign up
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding ion-flex ion-flex-center">
+    <div class="logo-container">
+      <h1 class="logo-placeholder">AppLacerGroup</h1>
+      <p>Haz login en tu cuenta.</p>
+    </div>
+    <form classs="form-default">
+      <ion-list class="item-card-list">
+        <ion-item>
+          <ion-label position="stacked">Email <span class="text-danger">*</span></ion-label>
+          <ion-input type="email" autocomplete="off" placeholder="Your email address">
+          </ion-input>
+        </ion-item>
+  
+        <ion-item class="ion-margin-top-small">
+          <ion-label position="stacked">Password <span class="text-danger">*</span></ion-label>
+          <ion-input type="password" placeholder="Your password"></ion-input>
+        </ion-item>
+      </ion-list>
+  
+      <ion-button class="ion-margin-top" type="submit" expand="block" color="primary">
+        <!-- <ion-icon name="log-in-outline"></ion-icon> -->
+        Sign in
+      </ion-button>
+    </form>
+  
+    <div class="ion-text-center ion-margin-top">
+      <ion-text color="medium">
+        <small>&copy; {{current_year}} - lvargas9715.</small>
+      </ion-text>
+    </div>
+  </div>
+
+</ion-content>
