@@ -105,8 +105,11 @@ export class SignupPage implements OnInit {
   }
 
   private saveInfoUser(userData: any): void {
-    this.storageS.set('userInfo', userData);
-    this.storageS.set('location', {});
+    // Guardando la informacion del usuario
+    this.storageS.set('userInfo', {
+      location: {},
+      userData
+    });
   }
 
 }

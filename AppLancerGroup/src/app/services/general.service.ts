@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AlertController, AlertOptions, LoadingController, LoadingOptions, ToastController } from '@ionic/angular';
 import axios from 'axios';
+import { IUser } from '../interfaces/i-user';
 import { IUserRequest } from '../interfaces/i-user-request';
 import { StorageService } from './storage.service';
 
@@ -12,13 +13,22 @@ export class GeneralService {
 
   private baseURL: string = 'https://api.lancergroup.org/likeride/api/Auth/Register';
   private API_KEY: string = '123456';
+  public userInfo: IUser | null = null;
 
   constructor(
     private storageS: StorageService,
     private loadingCtrl: LoadingController,
     private alertCtrl: AlertController,
     private toastCtrl: ToastController
-  ) { }
+  ) {
+    // Recuperando la informacion del storage
+    this.storageS.get('userInfo')?.then((result: IUser) => {
+      // Verificnado que el usuario exista
+      if (result != undefined) {
+        this.userInfo = result;
+      }
+    });
+  }
 
   /**
    * registerUser
@@ -62,6 +72,13 @@ export class GeneralService {
   }
 
   /**
+   * logoutUser
+   */
+  public logoutUser(): void {
+    this.storageS.remove('userInfo'); // Borrando la informacion del usuario
+  }
+
+  /**
    * showLoading
    */
    public async getLoadingCtrl(options: LoadingOptions = { duration: 2000 }) {
@@ -89,7 +106,7 @@ export class GeneralService {
   }
 
   /**
-   * name
+   * show Toast
    */
    async getToastCtrl(header: string, message: string, position: any, color: string, duration: number, icon?: string) {
 
