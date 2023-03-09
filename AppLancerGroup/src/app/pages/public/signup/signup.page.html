@@ -12,52 +12,102 @@
       <h1 class="logo-placeholder">AppLacerGroup</h1>
       <p>Crea una cuenta.</p>
     </div>
-    <form classs="form-default">
-      <ion-list class="item-card-list">
-        <ion-row>
-          <ion-col size="6">
+    <form classs="form-default" [formGroup]="signup_form" (submit)="signUp()">
+      <swiper (swiper)="setSwiperInstance($event)" (slideChange)="onSlideChange()" #swipe>
+        <ng-template swiperSlide>
+          <ion-list class="item-card-list">
+            <ion-row>
+              <ion-col size="6">
+                <ion-item>
+                  <ion-label position="stacked">Nombre <span class="text-danger">*</span></ion-label>
+                  <ion-input type="text" formControlName="first_name" name="first_name" autocomplete="off" placeholder="Your first name" required></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col size="6">
+                <ion-item>
+                  <ion-label position="stacked">Apellido <span class="text-danger">*</span></ion-label>
+                  <ion-input type="text" formControlName="last_name" name="last_name" autocomplete="off" placeholder="Your last name" required></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
             <ion-item>
-              <ion-label position="stacked">Nombre <span class="text-danger">*</span></ion-label>
-              <ion-input type="text" autocomplete="off" placeholder="Your first name"></ion-input>
+              <ion-label position="stacked">Correo <span class="text-danger">*</span></ion-label>
+              <ion-input type="email" formControlName="email" name="email" autocomplete="off" placeholder="Your email address" required></ion-input>
             </ion-item>
-          </ion-col>
-          <ion-col size="6">
+            
             <ion-item>
-              <ion-label position="stacked">Apellido <span class="text-danger">*</span></ion-label>
-              <ion-input type="text" autocomplete="off" placeholder="Your last name"></ion-input>
+              <ion-label position="stacked">Telefono <span class="text-danger">*</span></ion-label>
+              <ion-input type="number" formControlName="phone" name="phone" autocomplete="off" placeholder="Telefono" required></ion-input>
             </ion-item>
-          </ion-col>
-        </ion-row>
-        
-        <ion-item>
-          <ion-label position="stacked">Correo <span class="text-danger">*</span></ion-label>
-          <ion-input type="email" autocomplete="off" placeholder="Your email address"></ion-input>
-        </ion-item>
-        
-        <ion-item>
-          <ion-label position="stacked">Telefono <span class="text-danger">*</span></ion-label>
-          <ion-input type="number" autocomplete="off" placeholder="Telefono"></ion-input>
-        </ion-item>
-  
-        <ion-row>
-          <ion-col size="6">
-            <ion-item class="ion-margin-top-small">
-              <ion-label position="stacked">Contraseña <span class="text-danger">*</span></ion-label>
-              <ion-input type="password" placeholder="Your password"></ion-input>
-            </ion-item>
-          </ion-col>
-          <ion-col size="6">
-            <ion-item class="ion-margin-top-small">
-              <ion-label position="stacked">Contraseña repeat <span class="text-danger">*</span></ion-label>
-              <ion-input type="password" placeholder="Password repeat"></ion-input>
-            </ion-item>
-          </ion-col>
-        </ion-row>
-      </ion-list>
+      
+            <ion-row>
+              <ion-col size="6">
+                <ion-item class="ion-margin-top-small">
+                  <ion-label position="stacked">Contraseña <span class="text-danger">*</span></ion-label>
+                  <ion-input type="password" formControlName="password" name="password" placeholder="Your password" required></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col size="6">
+                <ion-item class="ion-margin-top-small">
+                  <ion-label position="stacked">Contraseña repeat <span class="text-danger">*</span></ion-label>
+                  <ion-input type="password" formControlName="password_repeat" name="password_repeat" placeholder="Password repeat" required></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-list>
+        </ng-template>
+        <ng-template swiperSlide>
+          <div class="container">
+            <ion-list class="item-card-list">
+              <ion-row>
+                <ion-col size="6">
+                  <ion-item>
+                    <ion-label position="stacked">Latitude</ion-label>
+                    <ion-input type="text" autocomplete="off" placeholder="0.000000" readonly></ion-input>
+                  </ion-item>
+                </ion-col>
+                <ion-col size="6">
+                  <ion-item>
+                    <ion-label position="stacked">Longitude</ion-label>
+                    <ion-input type="text" autocomplete="off" placeholder="0.000000" readonly></ion-input>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-list>
+            <ion-button expand="block" shape="round" color="dark" class="ion-margin-top">
+              <ion-icon slot="start" name="locate"></ion-icon>
+              Obtener Ubicacion
+            </ion-button>
+          </div>
+        </ng-template>
+        <ng-template swiperSlide>
+          <div class="m-auto">
+            <ion-avatar class="ion-margin-auto">
+              <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+            </ion-avatar>
+            <ion-button expand="block" shape="round" color="dark" class="ion-margin-top">
+              <ion-icon slot="start" name="image"></ion-icon>
+              Subir imagen
+            </ion-button>
+          </div>
+        </ng-template>
+      </swiper>
+      <ion-row>
+        <ion-col size="6">
+          <ion-button type="button" expand="block" fill="clear" (click)="changePage('back')" [disabled]="slides.isBeginning">
+            Atras <ion-icon slot="start" name="arrow-back"></ion-icon>
+          </ion-button>
+        </ion-col>
+        <ion-col size="6">
+          <ion-button type="button" expand="block" fill="clear" (click)="changePage()" [disabled]="slides.isEnd">
+            Siguiente <ion-icon slot="end" name="arrow-forward"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-button class="ion-margin-top" type="submit" expand="block" color="primary" [disabled]="!slides.isEnd" >
+        Sign up
+      </ion-button>
     </form>
-    <ion-button class="ion-margin-top" type="submit" expand="block" color="primary">
-      Sign up
-    </ion-button>
     <div class="ion-text-center ion-margin-top">
       <ion-text color="medium">
         <small>&copy; 2023 - lvargas9715.</small>
