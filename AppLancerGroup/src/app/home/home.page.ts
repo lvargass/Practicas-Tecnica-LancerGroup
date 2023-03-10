@@ -24,9 +24,11 @@ export class HomePage {
   ionViewDidEnter(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
-    this.userInfo = this.gService.userInfo;
-    this.geolocation = this.gService.geolocation;
-    // console.log(this.userInfo, this.geolocation);
+    this.gService.refreshData().then(() => {
+      this.userInfo = this.gService.userInfo;
+      this.geolocation = this.gService.geolocation;
+      console.log(this.userInfo, this.geolocation);
+    });
   }
 
   async performBiometricVerification(){

@@ -132,7 +132,7 @@ export class SignupPage implements OnInit {
         this.gService.saveInfoUser(result, this.geolocation);
         // Mostramos la pagina principal
         this.gService.getToastCtrl('Usuario registrado', 'El registro de usuario ha sido exitoso.', 'bottom', 'success', 5000);
-        this.router.navigateByUrl('/signin');
+        this.router.navigateByUrl('/home');
       }
     } catch (error) {
       console.log('error Signup: ', error);

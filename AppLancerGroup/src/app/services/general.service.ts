@@ -22,6 +22,7 @@ export class GeneralService {
     private alertCtrl: AlertController,
     private toastCtrl: ToastController
   ) {
+    // Actualizando la informacion del usuario en mi variable global
     this.refreshData();
   }
 
@@ -85,8 +86,6 @@ export class GeneralService {
     console.log(location)
     // Verificnado si hay que guardar el location
     if (location != null) this.storageS.set('location', { latitude: location.latitude, longitude: location.longitude });
-    // Actualizando la informacion del usuario en mi variable global
-    this.refreshData();
   }
 
   /**
@@ -152,21 +151,23 @@ export class GeneralService {
   /**
    * refreshData
    */
-  private refreshData() {
+  public async refreshData() {
     // Recuperando la informacion del storage
-    this.storageS.get('userInfo')?.then((result: IUser) => {
+    await this.storageS.get('userInfo')?.then((result: IUser) => {
       // Verificnado que el usuario exista
       if (result != undefined) {
         this.userInfo = result;
       }
     });
     // Obteniendo la location
-    this.storageS.get('location')?.then((result: any) => {
+    await this.storageS.get('location')?.then((result: any) => {
       // Verificnado que el location exista
       console.log('geolocation, ', result)
       if (result != undefined) {
         this.geolocation = result;
       }
     });
+
+    console.log('storage cargado');
   }
 }
