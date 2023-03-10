@@ -2,7 +2,7 @@
   <ion-toolbar color="light">
     <ion-buttons slot="end">
       <ion-button color="primary" routerLink="/signup">
-        Sign up
+        Registrarme
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -18,20 +18,20 @@
     <form classs="form-default" [formGroup]="signin_form" (submit)="signIn()">
       <ion-list class="item-card-list">
         <ion-item>
-          <ion-label position="stacked">Email <span class="text-danger">*</span></ion-label>
-          <ion-input type="email" formControlName="email" name="email" autocomplete="off" placeholder="Your email address">
+          <ion-label position="stacked">Correo Electronico <span class="text-danger">*</span></ion-label>
+          <ion-input type="email" formControlName="email" name="email" autocomplete="off" placeholder="Ingresa tu correo">
           </ion-input>
         </ion-item>
   
         <ion-item class="ion-margin-top-small">
-          <ion-label position="stacked">Password <span class="text-danger">*</span></ion-label>
-          <ion-input type="password" formControlName="password" name="password" placeholder="Your password"></ion-input>
+          <ion-label position="stacked">Contraseña <span class="text-danger">*</span></ion-label>
+          <ion-input type="password" formControlName="password" name="password" placeholder="Ingresa tu contraseña"></ion-input>
         </ion-item>
       </ion-list>
   
       <ion-button class="ion-margin-top" type="submit" expand="block" color="primary" [disabled]="!signin_form.valid">
         <!-- <ion-icon name="log-in-outline"></ion-icon> -->
-        Sign in
+        Iniciar sesion
       </ion-button>
     </form>
   

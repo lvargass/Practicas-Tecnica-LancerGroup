@@ -1,7 +1,7 @@
 <ion-header class="ion-no-border">
   <ion-toolbar color="light">
     <ion-buttons slot="start">
-      <ion-back-button text="Sign in" color="primary" defaultHref="/signin"></ion-back-button>
+      <ion-back-button text="Iniciar sesion" color="primary" defaultHref="/signin"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -21,19 +21,19 @@
               <ion-col size="6">
                 <ion-item>
                   <ion-label position="stacked">Nombre <span class="text-danger">*</span></ion-label>
-                  <ion-input type="text" formControlName="first_name" name="first_name" autocomplete="off" placeholder="Your first name" required></ion-input>
+                  <ion-input type="text" formControlName="first_name" name="first_name" autocomplete="off" placeholder="Ingresa tu nombre" required></ion-input>
                 </ion-item>
               </ion-col>
               <ion-col size="6">
                 <ion-item>
                   <ion-label position="stacked">Apellido <span class="text-danger">*</span></ion-label>
-                  <ion-input type="text" formControlName="last_name" name="last_name" autocomplete="off" placeholder="Your last name" required></ion-input>
+                  <ion-input type="text" formControlName="last_name" name="last_name" autocomplete="off" placeholder="Ingresa tu apellido" required></ion-input>
                 </ion-item>
               </ion-col>
             </ion-row>
             <ion-item>
-              <ion-label position="stacked">Correo <span class="text-danger">*</span></ion-label>
-              <ion-input type="email" formControlName="email" name="email" autocomplete="off" placeholder="Your email address" required></ion-input>
+              <ion-label position="stacked">Correo Electronico <span class="text-danger">*</span></ion-label>
+              <ion-input type="email" formControlName="email" name="email" autocomplete="off" placeholder="Ingresa tu correo" required></ion-input>
             </ion-item>
             
             <ion-item>
@@ -45,13 +45,13 @@
               <ion-col size="6">
                 <ion-item class="ion-margin-top-small">
                   <ion-label position="stacked">Contraseña <span class="text-danger">*</span></ion-label>
-                  <ion-input type="password" formControlName="password" name="password" placeholder="Your password" required></ion-input>
+                  <ion-input type="password" formControlName="password" name="password" placeholder="Ingresa tu contraseña" required></ion-input>
                 </ion-item>
               </ion-col>
               <ion-col size="6">
                 <ion-item class="ion-margin-top-small">
-                  <ion-label position="stacked">Contraseña repeat <span class="text-danger">*</span></ion-label>
-                  <ion-input type="password" formControlName="password_repeat" name="password_repeat" placeholder="Password repeat" required></ion-input>
+                  <ion-label position="stacked">Repetir Contraseña <span class="text-danger">*</span></ion-label>
+                  <ion-input type="password" formControlName="password_repeat" name="password_repeat" placeholder="Repite tu contraseña" required></ion-input>
                 </ion-item>
               </ion-col>
             </ion-row>
@@ -106,7 +106,7 @@
         </ion-col>
       </ion-row>
       <ion-button class="ion-margin-top" type="submit" expand="block" color="primary" [disabled]="!slides.isEnd" >
-        Sign up
+        Registrarme
       </ion-button>
     </form>
     <div class="ion-text-center ion-margin-top">
