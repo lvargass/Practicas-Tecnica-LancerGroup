@@ -79,7 +79,7 @@ export class SignupPage implements OnInit {
    */
   async openCamera() {
     const image = await Camera.getPhoto({
-      quality: 90,
+      quality: 40,
       allowEditing: false,
       resultType: CameraResultType.Base64
     });

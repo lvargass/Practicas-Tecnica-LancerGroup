@@ -58,8 +58,19 @@
         <ion-input type="text" autocomplete="off"readonly [value]="userInfo.userData.User.phoneNumber"></ion-input>
       </ion-item>
     </ion-list>
-    <ion-button (click)="onLogout()" expand="block" class="ion-margin-top">
-      Cerrar Sesion
-    </ion-button>
+    <ion-row class="ion-margin-top">
+      <ion-col size="7">
+        <ion-button (click)="onLogout()" expand="block">
+          <ion-icon slot="start" name="log-out"></ion-icon>
+          Cerrar Sesion
+        </ion-button>
+      </ion-col>
+      <ion-col size="5">
+        <ion-button (click)="performBiometricVerification()" expand="block" color="dark">
+          <ion-icon slot="start" name="finger-print"></ion-icon>
+          Biometric
+        </ion-button>
+      </ion-col>
+    </ion-row>
   </div>
 </ion-content>

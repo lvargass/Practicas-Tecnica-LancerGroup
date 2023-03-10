@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { IUser } from '../interfaces/i-user';
 import { GeneralService } from '../services/general.service';
 
+import { BiometryType, NativeBiometric } from "capacitor-native-biometric";
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -25,6 +27,34 @@ export class HomePage {
     this.userInfo = this.gService.userInfo;
     this.geolocation = this.gService.geolocation;
     // console.log(this.userInfo, this.geolocation);
+  }
+
+  async performBiometricVerification(){
+    const result = await NativeBiometric.isAvailable();
+  
+    if(!result.isAvailable) {
+      console.log('Not available');
+      return;
+    };
+
+    console.log(result)
+  
+    // const isValid = result.biometryType == BiometryType.MULTIPLE;
+  
+    const verified = await NativeBiometric.verifyIdentity({
+      reason: "Implementacion sencilla",
+      title: "Prueba de Login",
+      subtitle: "Sub titulo",
+      description: "Descripcion",
+    })
+      .then(() => true)
+      .catch(() => false);
+    // Verificado o no
+    if(verified) {
+      this.gService.getToastCtrl('Configuracion Biometrica', 'Usuario validado.', 'bottom', 'success', 3000);
+      return ;
+    }
+    this.gService.getToastCtrl('Configuracion Biometrica', 'Usuario Invalido.', 'bottom', 'danger', 3000);
   }
 
   /**
