@@ -1,5 +1,5 @@
 export interface IUser {
-    location: {};
+    // location: {};
     userData: {
         token: string;
         User: {

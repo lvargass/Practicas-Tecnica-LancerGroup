@@ -21,8 +21,8 @@ export class SigninPage implements OnInit {
 
   ngOnInit() {
     this.signin_form = this.formBuilder.group({
-      email: ['lvargas9715@gmail.com', Validators.compose([Validators.email, Validators.required])],
-      password: ['12345678', Validators.compose([Validators.minLength(8), Validators.maxLength(16), Validators.required])] // debe contener al menos una letra y un numero)
+      email: ['', Validators.compose([Validators.email, Validators.required])],
+      password: ['', Validators.compose([Validators.minLength(8), Validators.maxLength(16), Validators.required])] // debe contener al menos una letra y un numero)
     });
   }
 

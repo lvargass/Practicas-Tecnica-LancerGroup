@@ -22,21 +22,7 @@ export class GeneralService {
     private alertCtrl: AlertController,
     private toastCtrl: ToastController
   ) {
-    // Recuperando la informacion del storage
-    this.storageS.get('userInfo')?.then((result: IUser) => {
-      // Verificnado que el usuario exista
-      if (result != undefined) {
-        this.userInfo = result;
-      }
-    });
-    // Obteniendo la location
-    this.storageS.get('location')?.then((result: any) => {
-      // Verificnado que el location exista
-      console.log('geolocation, ', result)
-      if (result != undefined) {
-        this.geolocation = result;
-      }
-    });
+    this.refreshData();
   }
 
   /**
@@ -90,17 +76,17 @@ export class GeneralService {
   /**
    * saveInfoUser
    */
-  public saveInfoUser(userData: any, location = null): void {
+  public saveInfoUser(userData: any, location: any = null): void {
     // Guardando la informacion del usuario
     const data = {
-      location: {},
       userData
     };
     this.storageS.set('userInfo', data);
+    console.log(location)
     // Verificnado si hay que guardar el location
-    if (location != null) this.storageS.set('location', location);
+    if (location != null) this.storageS.set('location', { latitude: location.latitude, longitude: location.longitude });
     // Actualizando la informacion del usuario en mi variable global
-    this.userInfo = data;
+    this.refreshData();
   }
 
   /**
@@ -159,5 +145,28 @@ export class GeneralService {
       icon: icon
     });
     await toast.present();
+  }
+
+
+  // private Methods
+  /**
+   * refreshData
+   */
+  private refreshData() {
+    // Recuperando la informacion del storage
+    this.storageS.get('userInfo')?.then((result: IUser) => {
+      // Verificnado que el usuario exista
+      if (result != undefined) {
+        this.userInfo = result;
+      }
+    });
+    // Obteniendo la location
+    this.storageS.get('location')?.then((result: any) => {
+      // Verificnado que el location exista
+      console.log('geolocation, ', result)
+      if (result != undefined) {
+        this.geolocation = result;
+      }
+    });
   }
 }
