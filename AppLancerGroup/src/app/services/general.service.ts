@@ -25,6 +25,7 @@ export class GeneralService {
     this.storageS.get('userInfo')?.then((result: IUser) => {
       // Verificnado que el usuario exista
       if (result != undefined) {
+        console.log(result)
         this.userInfo = result;
       }
     });
@@ -83,10 +84,13 @@ export class GeneralService {
    */
   public saveInfoUser(userData: any): void {
     // Guardando la informacion del usuario
-    this.storageS.set('userInfo', {
+    const data = {
       location: {},
       userData
-    });
+    };
+    this.storageS.set('userInfo', data);
+    // Actualizando la informacion del usuario en mi variable global
+    this.userInfo = data;
   }
 
   /**

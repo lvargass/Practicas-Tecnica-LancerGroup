@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { IUser } from '../interfaces/i-user';
 import { GeneralService } from '../services/general.service';
 
 @Component({
@@ -9,10 +10,20 @@ import { GeneralService } from '../services/general.service';
 })
 export class HomePage {
 
+  userInfo: IUser | null = null;
+  imageURL: string = 'https://api.lancergroup.org/likeride/imagenes/avatar/x1/';
+
   constructor(
     private gService: GeneralService,
     private router: Router
   ) {}
+
+  ionViewDidEnter(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    this.userInfo = this.gService.userInfo;
+    console.log(this.userInfo)
+  }
 
   /**
    * onLogout

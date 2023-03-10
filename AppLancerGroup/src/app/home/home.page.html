@@ -1,22 +1,50 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Perfil del usuario
     </ion-title>
+    <ion-buttons slot="end" *ngIf="userInfo != null">
+      <!-- Estatus:  -->
+      <ion-button [color]="userInfo.userData.User.status == 'Pendiente' ? 'warning' : 'success'">{{ userInfo.userData.User.status }}</ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <!-- <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Perfil del usuario</ion-title>
     </ion-toolbar>
-  </ion-header>
+  </ion-header> -->
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-    <ion-button (click)="onLogout()" expand="block">
+  <div id="container" class="ion-margin-horizontal">
+    <div class="profile">
+      <ion-avatar class="ion-margin-auto">
+        <img [src]="imageURL + userInfo.userData.User.profilePic" *ngIf="userInfo != null" />
+      </ion-avatar>
+      <label *ngIf="userInfo != null">{{ userInfo.userData.User.custumerName }}</label>
+    </div>
+    <ion-list *ngIf="userInfo != null" class="ion-margin-top">
+      <ion-row>
+        <ion-col size="8">
+          <ion-item>
+            <ion-label position="stacked">Correo</ion-label>
+            <ion-input type="text" autocomplete="off"readonly [value]="userInfo.userData.User.userEmail"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="4">
+          <ion-item>
+            <ion-label position="stacked">Estatus</ion-label>
+            <ion-input type="text" autocomplete="off" readonly [value]="userInfo.userData.User.status"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-item>
+        <ion-label position="stacked">Telefono</ion-label>
+        <ion-input type="text" autocomplete="off"readonly [value]="userInfo.userData.User.phoneNumber"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-button (click)="onLogout()" expand="block" class="ion-margin-top">
       Cerrar Sesion
     </ion-button>
   </div>

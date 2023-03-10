@@ -42,13 +42,13 @@ export class SigninPage implements OnInit {
       }
       // Verificando LA contraseña esta mal
       if (result.code == 2) {
-        this.gService.getToastCtrl('Contraseña Incorrecta', `La contraseña ingresada es incorrecta`, 'top', 'danger', 5000);
+        this.gService.getToastCtrl('Contraseña Incorrecta', `La contraseña ingresada es incorrecta.`, 'top', 'danger', 5000);
         return;
       }
       // Si el usuario existe, guardamos la informacion en el storage
       this.gService.saveInfoUser(result);
       // Mostramos la pagina principal
-      this.gService.getToastCtrl('Usuario registrado', 'El registro de usuario ha sido exitoso.', 'bottom', 'success', 5000);
+      this.gService.getToastCtrl('Inicio de sesion', 'El inicio de sesion ha sido exitoso.', 'bottom', 'success', 5000);
       this.router.navigateByUrl('/home');
     }
 

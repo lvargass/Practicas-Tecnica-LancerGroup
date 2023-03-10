@@ -11,7 +11,8 @@
 <ion-content>
   <div class="ion-padding ion-flex ion-flex-center">
     <div class="logo-container">
-      <h1 class="logo-placeholder">AppLacerGroup</h1>
+      <img src="https://lancergroup.org/wp-content/uploads/2019/01/1.png" alt="">
+      <h1 class="logo-placeholder">App Mobile</h1>
       <p>Haz login en tu cuenta.</p>
     </div>
     <form classs="form-default" [formGroup]="signin_form" (submit)="signIn()">
@@ -28,7 +29,7 @@
         </ion-item>
       </ion-list>
   
-      <ion-button class="ion-margin-top" type="submit" expand="block" color="primary">
+      <ion-button class="ion-margin-top" type="submit" expand="block" color="primary" [disabled]="!signin_form.valid">
         <!-- <ion-icon name="log-in-outline"></ion-icon> -->
         Sign in
       </ion-button>
