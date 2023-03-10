@@ -11,6 +11,7 @@ import { GeneralService } from '../services/general.service';
 export class HomePage {
 
   userInfo: IUser | null = null;
+  geolocation: any = {};
   imageURL: string = 'https://api.lancergroup.org/likeride/imagenes/avatar/x1/';
 
   constructor(
@@ -22,7 +23,8 @@ export class HomePage {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
     this.userInfo = this.gService.userInfo;
-    console.log(this.userInfo)
+    this.geolocation = this.gService.geolocation;
+    // console.log(this.userInfo, this.geolocation);
   }
 
   /**

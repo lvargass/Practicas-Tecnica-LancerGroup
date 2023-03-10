@@ -14,6 +14,7 @@ export class GeneralService {
   private baseURL: string = 'https://api.lancergroup.org/likeride/api/Auth/';
   private API_KEY: string = '123456';
   public userInfo: IUser | null = null;
+  public geolocation: any = null;
 
   constructor(
     private storageS: StorageService,
@@ -25,8 +26,15 @@ export class GeneralService {
     this.storageS.get('userInfo')?.then((result: IUser) => {
       // Verificnado que el usuario exista
       if (result != undefined) {
-        console.log(result)
         this.userInfo = result;
+      }
+    });
+    // Obteniendo la location
+    this.storageS.get('location')?.then((result: any) => {
+      // Verificnado que el location exista
+      console.log('geolocation, ', result)
+      if (result != undefined) {
+        this.geolocation = result;
       }
     });
   }
@@ -82,13 +90,15 @@ export class GeneralService {
   /**
    * saveInfoUser
    */
-  public saveInfoUser(userData: any): void {
+  public saveInfoUser(userData: any, location = null): void {
     // Guardando la informacion del usuario
     const data = {
       location: {},
       userData
     };
     this.storageS.set('userInfo', data);
+    // Verificnado si hay que guardar el location
+    if (location != null) this.storageS.set('location', location);
     // Actualizando la informacion del usuario en mi variable global
     this.userInfo = data;
   }

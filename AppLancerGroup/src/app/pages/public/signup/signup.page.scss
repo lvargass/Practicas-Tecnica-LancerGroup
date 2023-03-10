@@ -1,6 +1,12 @@
 ion-content {
-    ion-avatar {
-        width: 128px;
-        height: 128px;
+    .logo-container {
+        img {
+            max-width: 80%;
+            margin: 10% 0 0;
+        }
+    }
+    ion-avatar img {
+        width: 88px;
+        height: 88px;
     }
 }
